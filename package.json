@@ -1,24 +1,36 @@
 {
-  "name": "shey-online-courses",
+  "name": "e-learning-dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky",
+    "format:fix": "prettier . --fix"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run format:fix"
+    ]
   },
   "dependencies": {
+    "antd": "^5.20.5",
+    "next": "14.2.8",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.8"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.10",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
