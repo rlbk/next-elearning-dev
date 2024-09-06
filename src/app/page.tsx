@@ -1,10 +1,13 @@
+import { GetCurrentUser } from "@/server-actions/users";
 import { UserButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
+import { Alert } from "antd";
 
 export default async function Home() {
-  const user = await currentUser();
-  let name = user?.fullName;
-  let email = user?.emailAddresses[0].emailAddress;
+  const response = await GetCurrentUser();
+  if (!response.success)
+    return <Alert message={response.message} type="error" />;
+
+  const { name, email } = response.data;
   return (
     <div className="p-5">
       <h1>Elearing Dev</h1>
